@@ -1,22 +1,63 @@
-# Read Me First
-The following was discovered as part of building this project:
+# Docker
+### Docker Build
 
-* The original package name 'com.example.spring-boot' is invalid and this project uses 'com.example.springboot' instead.
+To build the Docker image, execute the following command in the terminal:
 
-# Getting Started
+```bash
+docker build -t your-dockerhub-username/reponame .
+```
+Please replace your-dockerhub-username/reponame with your actual Docker Hub repository name.
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Docker Images
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.1/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.1/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.1/reference/htmlsingle/index.html#web)
+To view a list of Docker images on your system, use the following command:
 
-### Guides
-The following guides illustrate how to use some features concretely:
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+```bash
+docker images
+```
 
+
+```bash
+docker image ls
+```
+
+### Docker Run
+To run the Docker container, execute the following command:
+
+
+```bash
+docker run -d -p 8080:8080 --name spring 
+your-dockerhub-username/reponame:latest
+```
+
+This command will start the Docker container in detached mode (-d), map port 8080 on the host to port 8080 in the container (-p 8080:8080), and name the container as spring. Adjust the port mappings as needed.
+
+### Accessing the Application
+Once the container is running, you can access the Spring Boot application by navigating to http://localhost:8080 in your web browser.
+
+### To get Container ID/Container Name
+
+```bash
+docker ps -a
+```
+### To get Docker Container logs
+To stop the running Docker container, use the following command:
+
+```bash
+docker logs -f Container-Id/Container-Name
+```
+
+### Stopping the Docker Container
+To stop the running Docker container, use the following command:
+
+```bash
+docker stop Container-Id/Container-Name
+```
+
+### Forcefully Remove the Docker Container
+To stop the running Docker container, use the following command:
+
+```bash
+docker rm -f Container-Id/Container-Name
+```
